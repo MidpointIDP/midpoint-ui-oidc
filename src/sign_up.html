@@ -10,7 +10,23 @@
     <body>
         <p><strong>Sign Up</strong></p>
 
-        <p><button type="button" id="button_google_sign_up">Sign Up With Google</button></p>
+        <div id="g_id_onload"
+            data-client_id="foorbar"
+            data-context="signup"
+            data-ux_mode="popup"
+            data-callback="processCredentialResponses"
+            data-nonce=""
+            data-itp_support="true">
+        </div>
+
+        <div class="g_id_signin"
+            data-type="standard"
+            data-shape="rectangular"
+            data-theme="outline"
+            data-text="signin_with"
+            data-size="large"
+            data-logo_alignment="left">
+        </div>
     </body>
 
 </html>
