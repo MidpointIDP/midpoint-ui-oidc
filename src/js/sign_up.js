@@ -1,13 +1,16 @@
+function processGoogleIdToken(response) {
+    console.log("Got response from Google with credential: " + response.credential);
+}
+
 function windowLoaded() {
     console.log("onload event fired, in theory everything is loaded, let's add our button to let them log in");
 
     // Reference: https://developers.google.com/identity/gsi/web/guides/display-button#javascript
 
-    // TODO: Need to pass state and/or nonce here
     google.accounts.id.initialize(
         {
             client_id   : "263659947191-e0sr8qg2pmofgb15h5lc1ihu7bhni26j.apps.googleusercontent.com",
-            login_uri   : "https://ghwp9f7zqj.execute-api.us-east-2.amazonaws.com/oauth2/idp/google/callback"
+            callback    : processGoogleIdToken
         }
     );
 
