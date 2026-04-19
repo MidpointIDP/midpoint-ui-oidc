@@ -26,9 +26,11 @@ async function processGoogleIdToken(response) {
     }
 
     jsonObj = await response.json();
+    console.log('Parsed response body as JSON')
 
     // Step 2: Stringify with indentation (2 spaces)
     const prettyJson = JSON.stringify(jsonObj, null, 2);
+    console.log('Created pretty print of JSON')
 
     console.log('Response from backend:');
     console.log(prettyJson);
