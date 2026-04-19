@@ -1,3 +1,5 @@
+const nonce = crypto.randomUUID();
+
 async function processGoogleIdToken(response) {
     console.log("Got response from Google, sending ID token to backend for validation")
 
@@ -50,9 +52,12 @@ function windowLoaded() {
     google.accounts.id.initialize(
         {
             client_id   : "263659947191-e0sr8qg2pmofgb15h5lc1ihu7bhni26j.apps.googleusercontent.com",
-            callback    : processGoogleIdToken
+            callback    : processGoogleIdToken,
+            nonce       : nonce
         }
     );
+
+    console.log("Started Google login with nonce: " + nonce);
 
     // Now let's add our login button to the webpage div now that we are set up to handle the click
     google.accounts.id.renderButton(
