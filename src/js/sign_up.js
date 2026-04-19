@@ -1,5 +1,24 @@
-function processGoogleIdToken(response) {
+async function processGoogleIdToken(response) {
     console.log("Got response from Google with credential: " + response.credential);
+
+    // Send the ID token to the OAuth callback for validation and login token assignment
+    response = await fetch(
+        'https://ghwp9f7zqj.execute-api.us-east-2.amazonaws.com/oauth2/idp/google/callback',
+        {
+            method: "POST",
+            body: JSON.stringify(
+                {
+                    idToken: response.credential
+                }
+            ),
+            headers: {
+                "Content-type"  : "application/json; charset=UTF-8",
+                "Accept"        : "application/json"
+            }
+        }
+    );
+
+    console.log('Got response to callback POST');
 }
 
 function windowLoaded() {
