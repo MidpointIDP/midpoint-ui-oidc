@@ -1,5 +1,5 @@
 async function processGoogleIdToken(response) {
-    console.log("Got response from Google with credential: " + response.credential);
+    console.log("Got response from Google, sending ID token to backend for validation")
 
     // Send the ID token to the OAuth callback for validation and login token assignment
     response = await fetch(
@@ -18,7 +18,7 @@ async function processGoogleIdToken(response) {
         }
     );
 
-    console.log('Got response to callback POST');
+    // console.log('Got response to callback POST');
 
     // Check if the request was successful
     if (!response.ok) {
@@ -26,14 +26,13 @@ async function processGoogleIdToken(response) {
     }
 
     jsonObj = await response.json();
-    console.log('Parsed response body as JSON')
+    // console.log('Parsed response body as JSON')
 
     // Step 2: Stringify with indentation (2 spaces)
     const prettyJson = JSON.stringify(jsonObj, null, 2);
-    console.log('Created pretty print of JSON')
+    //console.log('Created pretty print of JSON')
 
-    console.log('Response from backend:');
-    console.log(prettyJson);
+    console.log('Response from backend:\n' + prettyJson);
 }
 
 function windowLoaded() {
