@@ -19,6 +19,19 @@ async function processGoogleIdToken(response) {
     );
 
     console.log('Got response to callback POST');
+
+    // Check if the request was successful
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    jsonObj = await response.json();
+
+    // Step 2: Stringify with indentation (2 spaces)
+    const prettyJson = JSON.stringify(jsonObj, null, 2);
+
+    console.log('Response from backend:');
+    console.log(prettyJson);
 }
 
 function windowLoaded() {
