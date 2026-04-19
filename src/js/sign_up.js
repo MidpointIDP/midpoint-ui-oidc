@@ -8,7 +8,7 @@ async function processGoogleIdToken(response) {
             method: "POST",
             body: JSON.stringify(
                 {
-                    idToken: response.credential
+                    id_token: response.credential
                 }
             ),
             headers: {
