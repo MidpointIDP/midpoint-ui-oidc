@@ -2,6 +2,7 @@ async function processGoogleIdToken(response) {
     console.log("Got response from Google, sending ID token to backend for validation")
 
     // Send the ID token to the OAuth callback for validation and login token assignment
+    const api_start = performance.now()
     response = await fetch(
         'https://ghwp9f7zqj.execute-api.us-east-2.amazonaws.com/oauth2/idp/google/callback',
         {
@@ -24,6 +25,12 @@ async function processGoogleIdToken(response) {
     if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
     }
+
+    const api_end = performance.now()
+
+    const duration = (end - start).toFixed(0);
+
+    console.log(`Fetch completed in ${duration} ms`);
 
     jsonObj = await response.json();
     // console.log('Parsed response body as JSON')
