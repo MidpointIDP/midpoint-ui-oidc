@@ -1,15 +1,30 @@
-function googleLoginClicked() {
-    console.log('Login button was clicked!');
+function processGoogleIdToken(response) {
+    console.log('Got a response from Google with ID token: ' + response.credential);
 }
 
 function windowLoaded() {
-    console.log('onload event fired, in theory everything is rendered');
-    const googleButton = document.querySelector('.g_id_signin');
+    console.log("onload event fired, in theory everything is loaded, let's add our button");
 
-    if (googleButton) {
-        googleButton.addEventListener('click', googleLoginClicked);
-        console.log('Event listener added to the Google button');
-    }
+    // Reference: https://developers.google.com/identity/gsi/web/guides/display-button#javascript
+
+    // TODO: Need to pass state and/or nonce here
+    google.accounts.id.initialize(
+        {
+            client_id   : "263659947191-e0sr8qg2pmofgb15h5lc1ihu7bhni26j.apps.googleusercontent.com",
+            callback    : processGoogleIdToken
+        }
+    );
+
+    // Now let's add our login button to the webpage div now that we are set up to handle the click
+    google.accounts.id.renderButton(
+        document.getElementById("div_google_button"),
+        
+        // customization options
+        { 
+            theme   : "outline", 
+            size    : "large" 
+        }  
+    );
 }
 
 
