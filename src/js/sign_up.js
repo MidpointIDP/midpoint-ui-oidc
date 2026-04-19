@@ -1,9 +1,5 @@
-function processGoogleIdToken(response) {
-    console.log('Got a response from Google with ID token: ' + response.credential);
-}
-
 function windowLoaded() {
-    console.log("onload event fired, in theory everything is loaded, let's add our button");
+    console.log("onload event fired, in theory everything is loaded, let's add our button to let them log in");
 
     // Reference: https://developers.google.com/identity/gsi/web/guides/display-button#javascript
 
@@ -11,7 +7,7 @@ function windowLoaded() {
     google.accounts.id.initialize(
         {
             client_id   : "263659947191-e0sr8qg2pmofgb15h5lc1ihu7bhni26j.apps.googleusercontent.com",
-            callback    : processGoogleIdToken
+            callback    : "https://ghwp9f7zqj.execute-api.us-east-2.amazonaws.com/oauth2/idp/google/callback"
         }
     );
 
