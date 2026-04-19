@@ -7,7 +7,7 @@ function windowLoaded() {
     google.accounts.id.initialize(
         {
             client_id   : "263659947191-e0sr8qg2pmofgb15h5lc1ihu7bhni26j.apps.googleusercontent.com",
-            callback    : "https://ghwp9f7zqj.execute-api.us-east-2.amazonaws.com/oauth2/idp/google/callback"
+            login_uri   : "https://ghwp9f7zqj.execute-api.us-east-2.amazonaws.com/oauth2/idp/google/callback"
         }
     );
 
