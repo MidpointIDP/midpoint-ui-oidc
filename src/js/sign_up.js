@@ -28,7 +28,7 @@ async function processGoogleIdToken(response) {
 
     const api_end = performance.now()
 
-    const duration = (end - start).toFixed(0);
+    const duration = (api_end - api_start).toFixed(0);
 
     console.log(`Fetch completed in ${duration} ms`);
 
